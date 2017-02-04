@@ -14,13 +14,17 @@ const getRawSize       = (buffer) => buffer.readInt32LE(buffer.length-4);
 
 const isTwiceCompressed = async (buffer) => {
   try {
-    const unzipped = await zlib.unzip(buffer);
-    const stillZipped = isGzipCompressed(unzipped);
-    return stillZipped ? [ true, unzipped ] : [ false ];
+    if(isGzipCompressed(buffer)) {
+      const unzipped = await zlib.unzip(buffer);
+      const stillZipped = isGzipCompressed(unzipped);
+      if(stillZipped) {
+        return [ true, unzipped ];
+      }
+    }
   }
-  catch(e) {
-    return [ false ];
-  }
+  catch(e) { }
+
+  return [ false ];
 };
 
 status.start({
