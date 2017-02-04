@@ -24,7 +24,7 @@ const isTwiceCompressed = async (buffer) => {
 };
 
 status.start({
-  pattern: 'Processing files {spinner} | {files} {files.bar} | Invalid: {invalid} | Twice-compressed: {twice}'
+  pattern: 'Processing files {spinner} | {files} {files.bar} | Unsized: {unsized} | Invalid: {invalid} | Twice-compressed: {twice}'
 });
 
 (async () => {
@@ -45,7 +45,6 @@ status.start({
     // console.log(`Processing ${filePath}`);
 
     const [bbase, fflags]  = file.split(MAILDIR_MAGIC);
-
     const [base, ...sizes] = bbase.split(',');
     const flags            = fflags.split(',');
 
@@ -96,7 +95,7 @@ status.start({
         }
         catch(ex) {
           console.error(ex);
-          process.exit(1);
+          process.exit(2);
         }
         continue;
       }
@@ -114,7 +113,7 @@ status.start({
       }
       catch(ex) {
         console.error(ex);
-        process.exit(2);
+        process.exit(3);
       }
     }
   }

@@ -19,7 +19,7 @@ You might want to shut down your LDA and Dovecot when you're doing this to avoid
 Requirements
 ------------
 
-nodejs >= 7.0
+`nodejs >= 7.0`
 
 Installation
 ------------
@@ -35,6 +35,8 @@ note the mailbox for which it is happening, navigate to it in the file system an
 As in if you do `ls` you should see the `{cur,new,tmp}` folders.
 
 Only works on one mailbox at a time.
+
+You can also run with a skip parameter `domain.com/user/.INBOX #> fix-maildir-size 300` to skip 300 mails from being processed.
 
 You should probably run `doveadm index -u <username> <mailbox name>` after you're done.
 
