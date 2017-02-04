@@ -42,3 +42,12 @@ You should probably run `doveadm index -u <username> <mailbox name>` after you'r
 
 Pull requests welcome.
 ENJOY!
+
+Keywords
+--------
+
+`Broken physical size for mail`
+`Corrupted index cache file`
+`dovecot.index.cache`
+`Cached message size smaller than expected`
+`Cached MIME parts don't match message during parsing: Cached header size mismatch`
